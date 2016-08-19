@@ -154,8 +154,7 @@ object Anagrams {
     *
     * Note: There is only one anagram of an empty sentence.
     */
-  def sentenceAnagrams(sentence: Sentence): List[Sentence] = List()
-//  {
-//    if (sentence.isEmpty) List(List())
-//  }
+  def sentenceAnagrams(sentence: Sentence): List[Sentence] =
+    if (sentence.isEmpty) List(List())
+    else List(List()) // TODO: complete implementation
 }
