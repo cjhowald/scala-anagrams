@@ -107,11 +107,10 @@ object Anagrams {
     * and has no zero-entries.
     */
   def subtract(x: Occurrences, y: Occurrences): Occurrences = {
-    val yMap = y.toMap
-    x map { case (char, num) =>
-      if (yMap contains (char)) (char, num - yMap(char))
-      else (char, num)
-    } filter { case (char, num) => num > 0 }
+    y.foldLeft(x.toMap)((occs, occ) =>
+      if (occ._2 == occs(occ._1)) occs - occ._1
+      else occs updated (occ._1, occs(occ._1) - occ._2)
+    ).toList
   }
 
 
@@ -155,7 +154,8 @@ object Anagrams {
     *
     * Note: There is only one anagram of an empty sentence.
     */
-  def sentenceAnagrams(sentence: Sentence): List[Sentence] = {
-    if
-  }
+  def sentenceAnagrams(sentence: Sentence): List[Sentence] = List()
+//  {
+//    if (sentence.isEmpty) List(List())
+//  }
 }
